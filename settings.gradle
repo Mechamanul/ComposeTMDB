@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 rootProject.name = "ComposeTMDB"
 include ':app'
 include ':domain'
+include ':utils'

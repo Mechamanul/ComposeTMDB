@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ComposeTMDB.iml" filepath="$PROJECT_DIR$/.idea/modules/ComposeTMDB.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ComposeTMDB.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ComposeTMDB.app.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/domain/ComposeTMDB.domain.iml" filepath="$PROJECT_DIR$/.idea/modules/domain/ComposeTMDB.domain.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/utils/ComposeTMDB.utils.iml" filepath="$PROJECT_DIR$/.idea/modules/utils/ComposeTMDB.utils.iml" />
     </modules>
   </component>
 </project>
