@@ -20,7 +20,7 @@ object Module {
         return Retrofit.Builder().apply {
             addConverterFactory(GsonConverterFactory.create())
             client(okHttpClient)
-            baseUrl(BuildConfig.BaseApiURL)
+            baseUrl(BuildConfig.BASE_API_URL)
         }.build()
     }
 
