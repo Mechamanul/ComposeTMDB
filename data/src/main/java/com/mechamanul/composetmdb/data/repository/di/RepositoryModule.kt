@@ -16,7 +16,7 @@ import javax.inject.Singleton
 
 @Module(includes = [NetworkModule::class])
 @InstallIn(SingletonComponent::class)
-object Module {
+object RepositoryModule {
     @Provides
     @Singleton
     fun provideMovieApi(retrofit: Retrofit):MovieApi{
