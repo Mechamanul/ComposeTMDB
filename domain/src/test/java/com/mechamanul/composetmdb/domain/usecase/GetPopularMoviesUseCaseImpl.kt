@@ -3,14 +3,10 @@ package com.mechamanul.composetmdb.domain.usecase
 import com.mechamanul.composetmdb.domain.models.Movie
 import com.mechamanul.composetmdb.domain.repository.MovieRepository
 import com.mechamanul.utils.composetmdb.base.Result
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import org.junit.jupiter.api.*
 import org.junit.jupiter.api.Assertions.*
 import java.time.LocalDate
@@ -22,12 +18,12 @@ class TestRepositoryWithMovies : MovieRepository {
             listOf(
                 Movie(
                     "Shrek",
-                    LocalDate.of(2000, 1, 1),
-                    "Shrek movie", 32
+                    2000,
+                    "Shrek movie", "pathToShrekPoster"
                 ), Movie(
                     "Test",
-                    LocalDate.now(),
-                    "test movie", 31
+                    2022,
+                    "test movie", "pathToTestPoster"
                 )
             )
         )
@@ -42,7 +38,7 @@ class TestRepositoryWithMovies : MovieRepository {
 
 class TestRepositoryWithError : MovieRepository {
 
-    private val testResError = Result.Error(Exception("network error"));
+    private val testResError = Result.Error(Exception("network error"))
     override suspend fun getPopularMovies(): Flow<Result<List<Movie>>> {
 
         return flow {
@@ -77,12 +73,12 @@ class GetPopularMoviesUseCaseImplTest {
                 listOf(
                     Movie(
                         "Shrek",
-                        LocalDate.of(2000, 1, 1),
-                        "Shrek movie", 32
+                        2000,
+                        "Shrek movie", "pathToShrekPoster"
                     ), Movie(
                         "Test",
-                        LocalDate.now(),
-                        "test movie", 31
+                        2022,
+                        "test movie", "pathToTestPoster"
                     )
                 )
             )
