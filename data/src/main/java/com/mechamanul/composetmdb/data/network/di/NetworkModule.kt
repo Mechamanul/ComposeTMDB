@@ -1,4 +1,4 @@
-package com.mechamanul.composetmdb.data.di
+package com.mechamanul.composetmdb.data.network.di
 
 import com.mechamanul.composetmdb.data.BuildConfig
 import dagger.Module
@@ -13,7 +13,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object Module {
+object NetworkModule {
     @Singleton
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
