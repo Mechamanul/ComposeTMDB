@@ -14,6 +14,7 @@ class RemoteMovieDataSourceImpl @Inject constructor(
 ) : RemoteMovieDataSource {
     override suspend fun getPopularMovies(): Result<List<Movie>> {
         val response = movieService.getPopularMovies()
+
         if (response.isSuccessful) {
             val result =
                 response.body()
@@ -26,6 +27,7 @@ class RemoteMovieDataSourceImpl @Inject constructor(
 
     private fun MovieResponseDetail.mapToDomain(): Movie {
         return Movie(
+            id = this.id,
             name = this.title,
             year = this.year.toInt(),
             poster = this.image,

@@ -5,8 +5,12 @@ import com.mechamanul.composetmdb.data.source.RemoteMovieDataSource
 import com.mechamanul.composetmdb.domain.models.Movie
 import com.mechamanul.composetmdb.domain.repository.MovieRepository
 import com.mechamanul.utils.composetmdb.base.Result
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.shareIn
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(private val remoteDataSource: RemoteMovieDataSource) :
@@ -17,7 +21,7 @@ class MovieRepositoryImpl @Inject constructor(private val remoteDataSource: Remo
             val apiResponse = remoteDataSource.getPopularMovies()
             emit(apiResponse)
             // later will be caching logic and pagination maybe
-        }
+        }.shareIn(CoroutineScope(Dispatchers.IO), SharingStarted.WhileSubscribed(), 1)
     }
 
 
