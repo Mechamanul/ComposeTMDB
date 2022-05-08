@@ -1,4 +1,4 @@
-package com.mechamanul.composetmdb.popular.composables
+package com.mechamanul.composetmdb.ui.popular.composables
 
 
 import androidx.compose.foundation.layout.fillMaxWidth

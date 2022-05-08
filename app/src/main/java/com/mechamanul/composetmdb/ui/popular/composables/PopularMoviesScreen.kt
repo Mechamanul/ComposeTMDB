@@ -1,4 +1,4 @@
-package com.mechamanul.composetmdb.popular.composables
+package com.mechamanul.composetmdb.ui.popular.composables
 
 
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,7 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.mechamanul.composetmdb.domain.models.Movie
-import com.mechamanul.composetmdb.popular.PopularMoviesViewModel
+import com.mechamanul.composetmdb.ui.popular.PopularMoviesViewModel
 
 @Composable
 fun PopularMoviesScreen(viewModel: PopularMoviesViewModel = hiltViewModel()) {

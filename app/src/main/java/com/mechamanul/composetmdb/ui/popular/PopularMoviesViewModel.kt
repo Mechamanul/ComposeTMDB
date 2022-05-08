@@ -1,4 +1,4 @@
-package com.mechamanul.composetmdb.popular
+package com.mechamanul.composetmdb.ui.popular
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

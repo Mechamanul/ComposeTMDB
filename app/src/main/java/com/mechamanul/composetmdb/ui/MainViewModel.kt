@@ -1,4 +1,4 @@
-package com.mechamanul.composetmdb
+package com.mechamanul.composetmdb.ui
 
 import android.graphics.drawable.Drawable
 import androidx.lifecycle.ViewModel

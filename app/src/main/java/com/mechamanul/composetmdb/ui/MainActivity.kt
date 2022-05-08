@@ -1,4 +1,4 @@
-package com.mechamanul.composetmdb
+package com.mechamanul.composetmdb.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.mechamanul.composetmdb.popular.composables.PopularMoviesScreen
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.mechamanul.composetmdb.ui.theme.ComposeTMDBTheme
 import com.skydoves.landscapist.glide.LocalGlideRequestBuilder
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     private val viewModel: MainViewModel by viewModels()
+
+    lateinit var navController: NavHostController
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -34,9 +37,10 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize(),
                         color = MaterialTheme.colors.background
                     ) {
-                        PopularMoviesScreen()
-//                    val navController = rememberNavController()
-//                    NavHost(navController = navController, startDestination = )
+//                        PopularMoviesScreen()
+                        navController = rememberNavController()
+                        SetupNavGraph(navController = navController)
+
                     }
                 }
             }
