@@ -1,11 +1,11 @@
 package com.mechamanul.composetmdb.di
 
-import com.mechamanul.composetmdb.domain.repository.MovieRepository
+import com.mechamanul.composetmdb.domain.usecase.GetMovieDetailsUseCase
+import com.mechamanul.composetmdb.domain.usecase.GetMovieDetailsUseCaseImpl
 import com.mechamanul.composetmdb.domain.usecase.GetPopularMoviesUseCase
 import com.mechamanul.composetmdb.domain.usecase.GetPopularMoviesUseCaseImpl
 import dagger.Binds
 import dagger.Module
-import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 
@@ -14,5 +14,7 @@ import dagger.hilt.components.SingletonComponent
 abstract class DomainModule {
     @Binds
     abstract fun bindGetPopularMovies(getPopularMoviesUseCaseImpl: GetPopularMoviesUseCaseImpl): GetPopularMoviesUseCase
-//    fun provideGetPopularMovies(repository: MovieRepository) = GetPopularMoviesUseCaseImpl(repository)
+
+    @Binds
+    abstract fun bindGetMovieDetails(getMovieDetailsUseCaseImpl: GetMovieDetailsUseCaseImpl): GetMovieDetailsUseCase
 }

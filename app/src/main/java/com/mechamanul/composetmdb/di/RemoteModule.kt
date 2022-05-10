@@ -2,6 +2,7 @@ package com.mechamanul.composetmdb.di
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.util.Log
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -15,6 +16,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
+import okhttp3.HttpUrl
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,8 +45,16 @@ object RemoteModule {
     fun provideNetworkInterceptor(): Interceptor = Interceptor { chain ->
         val request = chain.request()
         val originalHttpUrl = request.url
+        Log.d("EncodedSegments:", originalHttpUrl.encodedPath)
+        Log.d("PathSegments:", "${originalHttpUrl.pathSegments}")
+        val segments = originalHttpUrl.pathSegments
+        val newSegments: MutableList<String> = segments.toMutableList()
+        newSegments.add(3, BuildConfig.API_KEY)
+
         val url =
-            originalHttpUrl.newBuilder().addPathSegment(BuildConfig.API_KEY).build()
+            HttpUrl.Builder().scheme("https").host("imdb-api.com")
+                .addPathSegments(newSegments.joinToString("/")).build()
+
         val builder = request.newBuilder()
             .addHeader("Accept-Language", "en-US")
             .addHeader("Content-Type", "application/json")
@@ -84,7 +94,7 @@ object RemoteModule {
     @Provides
     fun provideLoggingInterceptor(): HttpLoggingInterceptor {
         val loggingInterceptor = HttpLoggingInterceptor()
-        loggingInterceptor.level = HttpLoggingInterceptor.Level.BASIC
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         return loggingInterceptor
     }
 

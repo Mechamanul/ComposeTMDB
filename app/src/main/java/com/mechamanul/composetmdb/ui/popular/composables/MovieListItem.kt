@@ -1,10 +1,10 @@
 package com.mechamanul.composetmdb.ui.popular.composables
 
 
+import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -32,8 +32,8 @@ fun MovieListItem(movie: Movie, modifier: Modifier = Modifier) {
             val (image, header, crew) = createRefs()
             GlideImage(
                 modifier = Modifier
-                    .height(150.dp)
-                    .width(150.dp)
+                    .height(200.dp)
+                    .aspectRatio(0.8f)
                     .constrainAs(image) {
                         top.linkTo(parent.top)
                         bottom.linkTo(parent.bottom)
